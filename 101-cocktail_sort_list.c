@@ -2,11 +2,35 @@
 #include <stdio.h>
 
 /**
+ *swap_node - Swap two nodes of a doubly linked list
+ *@node: The node to swap with the next node
+ *@list: The double linked lists that contains the nodes
+ *
+ *Return: return a pointer to a node which was enter it
+ */
+listint_t *swap_node(listint_t *node, listint_t **list)
+{
+	listint_t *back = node->prev, *current = node;
+
+	back->next = current->next;
+	if (current->next)
+		current->next->prev = back;
+	current->next = back;
+	current->prev = back->prev;
+	back->prev = current;
+	if (current->prev)
+		current->prev->next = current;
+	else
+		*list = current;
+	return (current);
+}
+
+/**
  *cocktail_sort_list - Sorts a doubly linked list
  * of integers in ascending order using the
  * Cocktail Shaker sort algorithm.
  *
- *@list: list
+ *@list: list to be sorted
  */
 
 void cocktail_sort_list(listint_t **list)
@@ -45,28 +69,4 @@ void cocktail_sort_list(listint_t **list)
 				node = node->prev;
 		}
 	}
-}
-
-/**
- *swap_node - Swap two nodes of a doubly linked list
- *@node: The node to swap with the next node
- *@list: The double linked lists that contains the nodes
- *
- *Return: return a pointer to a node which was enter it
- */
-listint_t *swap_node(listint_t *node, listint_t **list)
-{
-	listint_t *back = node->prev, *current = node;
-
-	back->next = current->next;
-	if (current->next)
-		current->next->prev = back;
-	current->next = back;
-	current->prev = back->prev;
-	back->prev = current;
-	if (current->prev)
-		current->prev->next = current;
-	else
-		*list = current;
-	return (current);
 }

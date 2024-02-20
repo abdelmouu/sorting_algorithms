@@ -7,7 +7,7 @@
   *
   * Return: Nothing.
   */
-  
+
 void insertion_sort_list(listint_t **list)
 {
 	bool flag = false;

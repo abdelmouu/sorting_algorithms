@@ -5,6 +5,7 @@
  * @array: array
  * @low: lowest
  * @size: size
+ * @high: highest
  * Return: new index at which to start new recursive partition
  */
 int hoare_partition(int *array, size_t low, size_t high, size_t size)
